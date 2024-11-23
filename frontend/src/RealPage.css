@@ -1,0 +1,45 @@
+.real {
+    position: relative; /* Для того, чтобы другие элементы располагались поверх изображения */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+.real-background {
+    object-fit: cover; /* Чтобы изображение масштабировалось по размеру экрана */
+}
+  
+.real::before {
+    content: ''; /* Псевдо-элемент */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.59); /* Полупрозрачный темный слой */
+}
+  
+.real_context {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* Чтобы текст был поверх темного фона */
+}
+  
+.real_text {
+    color: #ffffff; /* Белый цвет текста */
+    font-size: 90px;
+    font-family: Courier, monospace;
+    text-align: center;
+    margin: 20px;
+}
+  
+.real_button_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1; /* Чтобы кнопка была поверх темного фона */
+    color:aqua
+}

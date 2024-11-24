@@ -1,47 +1,61 @@
-import React from "react";
-import './SupportPage.css';
-import { useNavigate } from "react-router-dom"; // Импортируем useNavigate для навигации
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import ButtonSuprise from "./components/button_suprise.jsx";
-import studyImage from './assets/help.png'; // Импортируем изображение
+import './RunningPage.css';
+import Square_running from "./components/Square_running.jsx";
+import SurprisePage from "./SuprisePage.jsx"; // Импортируем SurprisePage
 
 function SupportPage() {
-    const pageVariants = {
-        initial: { opacity: 0 },
-        in: { opacity: 1 },
-        out: { opacity: 0 },
-    };
+  const [showSurprise, setShowSurprise] = useState(false); // Состояние для отслеживания, нужно ли показывать SurprisePage
+  const [showButton, setShowButton] = useState(false); // Состояние для показа кнопки
 
-    const navigate = useNavigate();
+  // Функция для показа SurprisePage
+  const handleContinue = () => {
+    setShowSurprise(true); // Обновляем состояние для показа SurprisePage
+  };
 
-    const new_page = () => {
-        navigate('/real'); // Переход на страницу RunningPage
-    };
+  // Анимационные варианты
+  const pageVariants = {
+    initial: { opacity: 0 },
+    in: { opacity: 1 },
+    out: { opacity: 0 },
+  };
 
-    return (
-        <motion.div
-            initial="initial"
-            animate="in"
-            exit="out"
-            variants={pageVariants}
-            transition={{ duration: 0.9 }} // Длительность анимации
-        >
-            <div className="suprise">
-                <div className="suprise_context">
-                    <div className="picture_working">
-                        {/* Используем <img> с импортированным изображением */}
-                        <img src={studyImage} alt="Working" className="working-image" />
-                    </div>
-                    <h1 className="suprise_text">
-                    You are so careful, even if smth happened we always together, solve the problem as Team-Moon<br />
-                    </h1>
-                </div>
-                <div className="suprise_button_container">
-                    <ButtonSuprise onClick={new_page} />
-                </div>
-            </div>
-        </motion.div>
-    );
+  // Используем useEffect для показа кнопки через 3 секунды
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowButton(true); // Показываем кнопку через 3 секунды
+    }, 5000); // 3000 миллисекунд = 3 секунды
+
+    // Очищаем таймер при размонтировании компонента
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Если нужно показать SurprisePage, рендерим его
+  if (showSurprise) {
+    return <SurprisePage />;
+  }
+
+  return (
+    <div className="running-page">
+      <motion.div
+        initial="initial"
+        animate="in"
+        exit="out"
+        variants={pageVariants}
+        transition={{ duration: 0.5 }} // Длительность анимации
+        className="running-content"
+      >
+        <h1>You hear someone is running to you</h1>
+        <p>Who is that?</p>
+        <Square_running />
+
+        {/* Показываем кнопку только если showButton равно true */}
+        {showButton && (
+          <button className="button_running" onClick={handleContinue}>Continue</button>
+        )}
+      </motion.div>
+    </div>
+  );
 }
 
 export default SupportPage;

@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+// App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
+import MainPage from './MainPage.jsx';
+import RunningPage from './RunningPage.jsx';
+import SuprisePage from './SuprisePage.jsx';
+import WorkingPage from './WorkingPage.jsx';
+import SupportPage from './SupportPage.jsx';
+import WorryingPage from './WorryingPage.jsx';
+import ProudPage from './ProudPage.jsx';
+import RealPage from './RealPage.jsx';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <AnimatePresence>
+        <Routes>
+          <Route path="/" element={<MainPage />} />
+          <Route path="/running" element={<RunningPage />} />
+          <Route path="/suprise" element={<SuprisePage />} />
+          <Route path="/working" element={<WorkingPage />} />
+          <Route path="/worrying" element={<WorryingPage />} />
+          <Route path="/proud" element={<ProudPage />} />
+          <Route path="/real" element={<RealPage />} />
+          <Route path="/support" element={<SupportPage />} />
+        </Routes>
+      </AnimatePresence>
+    </Router>
+  );
+};
 
-export default App
+export default App;

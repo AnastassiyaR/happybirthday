@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import './RunningPage.css';
 import Square_running from "./components/Square_running.jsx";
-import SurprisePage from "./SuprisePage.jsx"; // Импортируем SurprisePage
+import RealPage from "./RealPage.jsx"; // Импортируем SurprisePage
 
 function SupportPage() {
   const [showSurprise, setShowSurprise] = useState(false); // Состояние для отслеживания, нужно ли показывать SurprisePage
@@ -32,7 +32,7 @@ function SupportPage() {
 
   // Если нужно показать SurprisePage, рендерим его
   if (showSurprise) {
-    return <SurprisePage />;
+    return <RealPage />;
   }
 
   return (

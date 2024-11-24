@@ -27,7 +27,7 @@ function MainPage({ onPageChange }) {
         <h1 className='text'>To my little Dummy</h1>
 
         {/* Кнопки для перехода на другие страницы */}
-        <button className="button" onClick={() => onPageChange("Running")}>Сщтештгу</button>
+        <button className="button" onClick={() => onPageChange("Running")}>Continue</button>
       </div>
     </motion.div>
   );

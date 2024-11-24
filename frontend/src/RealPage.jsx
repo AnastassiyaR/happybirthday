@@ -1,8 +1,6 @@
 import React from "react";
 import './RealPage.css'; // Импортируем стили
-import { useNavigate } from "react-router-dom"; // Для навигации между страницами
 import { motion } from 'framer-motion';
-import ButtonSuprise from "./components/button_suprise.jsx";
 import weImage from './assets/dummy.png'; // Импортируем изображение
 
 function RealPage() {
@@ -12,11 +10,6 @@ function RealPage() {
         out: { opacity: 0 },
     };
 
-    const navigate = useNavigate();
-
-    const new_page = () => {
-        return navigate('/proud'); // Переход на страницу ProudPage
-    };
 
     return (
         <motion.div
@@ -31,10 +24,11 @@ function RealPage() {
                     <h1 className="real_text">
                         Please stay that real Himanshu I know
                     </h1>
+                    {/* Добавляем кнопку для навигации */}
                 </div>
             </div>
         </motion.div>
     );
-};
+}
 
-export default RealPage;
+export default RealPage

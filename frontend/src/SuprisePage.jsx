@@ -24,7 +24,7 @@ function SuprisePage() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowButton(true); // Показываем кнопку через 5 секунд
-        }, 5000); // 5000 миллисекунд = 5 секунд
+        }, 1000); // 5000 миллисекунд = 5 секунд
 
         // Очищаем таймер при размонтировании компонента
         return () => clearTimeout(timer);
@@ -45,7 +45,6 @@ function SuprisePage() {
                 transition={{ duration: 0.5 }} // Длительность анимации
                 className="suprise-content"
             >
-                <h1>Surprise!</h1>
                 <img src={weImage} alt="Surprise" className="surprise-image" />
 
                 {/* Показываем кнопку только если showButton равно true */}
